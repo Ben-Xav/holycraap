@@ -4,16 +4,6 @@
 # Compiled class file
 *.class
 
-#IntelliJ-specific stuff
-.idea/
-*.iml
-out/
-
-#Eclipse-specific stuff
-.settings/
-.classpath
-.project
-
 #Maven-specific stuff
 target/*
 
@@ -41,6 +31,7 @@ hs_err_pid*
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 !**/src/main/**
 !**/src/test/**
 
