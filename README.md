@@ -11,7 +11,16 @@ JavaScript, using Spring and React.
 
 ## Installation
 
-Create a new MySQL user and update the `src/main/resources/application.properties` file.
+Create a new MySQL user:
+- once connected to MySQL, type the following commands :
+```sh
+CREATE USER 'root1'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'root1'@'localhost';
+FLUSH PRIVILEGES;
+ALTER USER 'root1'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root1';
+```
+
+Then update the `src/main/resources/application.properties` file.
 
 A new database will be created upon startup.
 
