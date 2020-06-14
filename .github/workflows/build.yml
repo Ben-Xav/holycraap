@@ -22,8 +22,14 @@ jobs:
     - name: Update Aptitude cache
       run: sudo apt update
 
+    - name: Upgrade all packages
+      run: sudo apt upgrade -y
+
     - name: Install MySQL server
-      run: sudo apt install mysql-server
+      run: sudo apt install -y mysql-server
+
+    - name: Start MySQL server
+      run: sudo mysql.server start
 
     - name: Configure MySQL server
       run: mysql -proot -uroot -e "GRANT ALL PRIVILEGES ON db_holycraap.* TO 'root'@'localhost'; FLUSH PRIVILEGES"
