@@ -21,7 +21,7 @@ public class People implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     @NonNull
     private String name;
     private int currentHp;
