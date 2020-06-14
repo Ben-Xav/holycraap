@@ -22,9 +22,6 @@ jobs:
     - name: Update Aptitude cache
       run: sudo apt update
 
-    - name: Upgrade all packages
-      run: sudo apt upgrade -y
-
     - name: Install MySQL server
       run: sudo apt install -y mysql-server
 
