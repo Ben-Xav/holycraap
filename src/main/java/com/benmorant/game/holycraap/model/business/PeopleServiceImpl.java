@@ -2,10 +2,11 @@ package com.benmorant.game.holycraap.model.business;
 
 import com.benmorant.game.holycraap.model.dao.PeopleDao;
 import com.benmorant.game.holycraap.model.entity.People;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
