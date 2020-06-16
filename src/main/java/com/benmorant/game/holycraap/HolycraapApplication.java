@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class HolycraapApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 
 		SpringApplication app = new SpringApplication(HolycraapApplication.class);
 		//app.setAdditionalProfiles("initData");

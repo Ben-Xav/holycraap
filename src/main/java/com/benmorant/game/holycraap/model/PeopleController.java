@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(path = "/people")
 public class PeopleController {
+
     @Autowired
 
     private PeopleService peopleService;
@@ -20,7 +21,8 @@ public class PeopleController {
     @PostMapping(path = "/add")
     public @ResponseBody
     String addNewPeople(@RequestParam String name
-            , @RequestParam int currentHp, @RequestParam int hpMax, @RequestParam int currentMp, @RequestParam int mpMax) {
+        , @RequestParam int currentHp, @RequestParam int hpMax, @RequestParam int currentMp,
+        @RequestParam int mpMax) {
 
         People p = new People();
         p.setName(name);
