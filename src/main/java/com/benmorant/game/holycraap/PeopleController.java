@@ -1,4 +1,4 @@
-package com.benmorant.game.holycraap.model;
+package com.benmorant.game.holycraap;
 
 import com.benmorant.game.holycraap.model.business.PeopleService;
 import com.benmorant.game.holycraap.model.entity.People;
