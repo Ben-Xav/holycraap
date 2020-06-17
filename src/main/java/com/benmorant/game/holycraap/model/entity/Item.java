@@ -25,7 +25,7 @@ public class Item implements Serializable {
   private Integer id;
 
   private String name;
-  private int weight;
+  private int slot;
 
   private double price;
 

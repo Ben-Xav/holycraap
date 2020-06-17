@@ -1,7 +1,7 @@
 /* Item */
-insert into `item` (name, price, weight) values ('Dent de dragon', '100', '1');
-insert into `item` (name, price, weight) values ('salicorne', '2', '1');
-insert into `item` (name, price, weight) values ('gousse de mandragore', '5', '1');
+insert into `item` (name, price, slot) values ('Dent de dragon', '100', '1');
+insert into `item` (name, price, slot) values ('salicorne', '2', '1');
+insert into `item` (name, price, slot) values ('gousse de mandragore', '5', '1');
 
 /* People */
 insert into `people` (name, current_hp, hp_max, current_mp, mp_max) values ('Loup Ardent', '12', '12', '6', '6');
