@@ -3,7 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
     id 'checkstyle'
-        id "com.github.spotbugs" version "4.3.0"
+    id "com.github.spotbugs" version "4.3.0"
 }
 
 group = 'com.benmorant.game'
@@ -54,6 +54,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
