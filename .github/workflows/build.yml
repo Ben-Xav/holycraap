@@ -35,4 +35,4 @@ jobs:
       run: sed -Ei 's/spring.datasource.(username|password) *=.*/spring.datasource.\1=root/g' src/main/resources/application.properties
 
     - name: Build with Gradle
-      run: gradle build
+      run: gradle build -x googleJavaFormat

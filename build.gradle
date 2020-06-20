@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
     id 'checkstyle'
+    id 'com.github.sherter.google-java-format' version '0.8'
 }
 
 group = 'com.benmorant.game'
@@ -13,6 +14,8 @@ checkstyle {
     toolVersion = '8.33'
     maxErrors = 0
 }
+
+checkstyleMain.dependsOn 'googleJavaFormat'
 
 configurations {
     compileOnly {
