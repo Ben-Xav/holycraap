@@ -1,4 +1,4 @@
-package com.benmorant.game.holycraap;
+package com.benmorant.game.holycraap.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

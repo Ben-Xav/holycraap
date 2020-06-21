@@ -1,4 +1,4 @@
-package com.benmorant.game.holycraap.model;
+package com.benmorant.game.holycraap.controller;
 
 import com.benmorant.game.holycraap.model.business.PeopleService;
 import com.benmorant.game.holycraap.model.entity.People;
@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PeopleController {
   @Autowired private PeopleService peopleService;
 
-  /**
-   * This class just served as an attempt to follow one of Spring.io guides.
-   */
+  /** This class just served as an attempt to follow one of Spring.io guides. */
   @PostMapping(path = "/add")
   public @ResponseBody String addNewPeople(
       @RequestParam String name,
