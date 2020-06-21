@@ -17,5 +17,3 @@ public class HolycraapApplication extends SpringBootServletInitializer {
 		System.out.println("http://localhost:8080/");
 	}
 }
-
-
