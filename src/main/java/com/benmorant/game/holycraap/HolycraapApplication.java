@@ -10,8 +10,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class HolycraapApplication extends SpringBootServletInitializer {
 
   /**
-   * Main class for running the one and only Holy Craap.
-   */
+	 * Main class for running the one and only Holy Craap.
+	 */
   @SuppressFBWarnings("DLS_DEAD_LOCAL_STORE")
   public static void main(String[] args) {
     SpringApplication app = new SpringApplication(HolycraapApplication.class);

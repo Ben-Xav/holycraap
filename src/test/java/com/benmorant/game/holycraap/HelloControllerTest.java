@@ -29,9 +29,7 @@ class HelloControllerTest {
     assertThat(controller).isNotNull();
   }
 
-  /**
-   * Testing GET "/" API route.
-   */
+  /** Testing GET "/" API route. */
   @Test
   public void shouldReturnYo() throws Exception {
     mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string("Yo !"));

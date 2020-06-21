@@ -1,5 +1,6 @@
 package com.benmorant.game.holycraap.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "inventory")
-public class Inventory {
+public class Inventory implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
