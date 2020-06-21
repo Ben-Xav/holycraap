@@ -60,6 +60,7 @@ public class PeopleController {
     return ResponseEntity.ok().body(result);
   }
 
+  /** Method for deleting a people by id. */
   @DeleteMapping("/people/{id}")
   public ResponseEntity<?> deletePeople(@PathVariable Integer id) {
     log.info("Request to delete people: {}", id);

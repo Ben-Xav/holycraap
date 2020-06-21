@@ -1,10 +1,9 @@
-package com.benmorant.game.holycraap.model;
+package com.benmorant.game.holycraap.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.benmorant.game.holycraap.controller.PeopleController;
 import com.benmorant.game.holycraap.model.entity.People;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +31,7 @@ class PeopleControllerTest {
   @Test
   public void shouldReturnAllPeople() throws Exception {
     final MvcResult result =
-        mockMvc.perform(get("/people/all")).andExpect(status().isOk()).andReturn();
+        mockMvc.perform(get("/api/people")).andExpect(status().isOk()).andReturn();
     final Collection<People> peopleList =
         objectMapper.readValue(
             result.getResponse().getContentAsString(), new TypeReference<Collection<People>>() {});
