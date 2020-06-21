@@ -7,6 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class HolycraapApplicationTests {
 
   @Test
-  void contextLoads() {
-  }
+  void contextLoads() {}
 }
