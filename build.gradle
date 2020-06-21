@@ -4,6 +4,8 @@ plugins {
     id 'java'
     id 'checkstyle'
     id 'com.github.sherter.google-java-format' version '0.8'
+    id 'jacoco'
+    id 'com.github.spotbugs' version '4.4.1'
 }
 
 group = 'com.benmorant.game'
@@ -15,7 +17,23 @@ checkstyle {
     maxErrors = 0
 }
 
+
 checkstyleMain.dependsOn 'googleJavaFormat'
+
+spotbugsMain {
+    reports {
+        html.enabled = true
+        xml.enabled = false
+    }
+}
+
+spotbugsTest {
+    reports {
+        html.enabled = true
+        xml.enabled = false
+    }
+}
+
 
 configurations {
     compileOnly {
@@ -35,6 +53,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
+
+    // SpotBugs and its dependencies
+    compileOnly 'com.google.code.findbugs:annotations:3.0.1'
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -47,4 +71,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
 }
