@@ -1,13 +1,11 @@
 package com.benmorant.game.holycraap.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,8 +32,8 @@ public class People implements Serializable {
     private int currentMp;
     private int mpMax;
 
-    @OneToMany(mappedBy = "people")
-    private List<PeopleItem> peopleItems = new ArrayList<>();
+    @OneToOne(mappedBy = "people")
+    private Inventory inventory;
 
 
 }

@@ -1,12 +1,13 @@
 package com.benmorant.game.holycraap.model.entity;
 
-import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +15,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "people_item")
-public class PeopleItem implements Serializable {
+@Table(name = "inventory")
+public class Inventory {
 
   private static final long serialVersionUID = 1L;
 
@@ -23,13 +24,11 @@ public class PeopleItem implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne
+  @OneToOne
   @JoinColumn(referencedColumnName = "id")
   private People people;
 
-  @ManyToOne
-  @JoinColumn(referencedColumnName = "id")
-  private Item item;
-
+  @OneToMany
+  private List<Item> items;
 
 }
