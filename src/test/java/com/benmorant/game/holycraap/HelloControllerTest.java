@@ -15,15 +15,11 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 class HelloControllerTest {
 
-  @Autowired
-  private HelloController controller;
+  @Autowired private HelloController controller;
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-  /**
-   * Sanity check to verify the controller has been properly loaded.
-   */
+  /** Sanity check to verify the controller has been properly loaded. */
   @Test
   public void contextLoads() {
     assertThat(controller).isNotNull();

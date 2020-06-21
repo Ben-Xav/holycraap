@@ -27,6 +27,5 @@ public class Item implements Serializable {
 
   private double price;
 
-  @ManyToOne
-  private Inventory inventory;
+  @ManyToOne private Inventory inventory;
 }

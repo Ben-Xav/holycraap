@@ -11,8 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PeopleServiceImpl implements PeopleService {
 
-  @Autowired
-  PeopleDao peopleDao;
+  @Autowired PeopleDao peopleDao;
 
   @Override
   public People saveInBase(People people) {

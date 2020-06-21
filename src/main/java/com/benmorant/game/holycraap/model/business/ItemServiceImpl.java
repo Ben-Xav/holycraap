@@ -10,8 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ItemServiceImpl implements ItemService {
 
-  @Autowired
-  ItemDao itemDao;
+  @Autowired ItemDao itemDao;
 
   @Override
   public Item saveInBase(Item item) {

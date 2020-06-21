@@ -25,8 +25,7 @@ public class People implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @NonNull
-  private String name;
+  @NonNull private String name;
   private int currentHp;
   private int hpMax;
   private int currentMp;

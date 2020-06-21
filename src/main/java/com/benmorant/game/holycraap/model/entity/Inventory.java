@@ -29,6 +29,5 @@ public class Inventory implements Serializable {
   @JoinColumn(referencedColumnName = "id")
   private People people;
 
-  @OneToMany
-  private List<Item> items;
+  @OneToMany private List<Item> items;
 }
