@@ -12,10 +12,8 @@ public class HolycraapApplication extends SpringBootServletInitializer {
 	@SuppressFBWarnings("DLS_DEAD_LOCAL_STORE")
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(HolycraapApplication.class);
-		//app.setAdditionalProfiles("initData");
+		// app.setAdditionalProfiles("initData");
 		ConfigurableApplicationContext context = app.run(args);
 		System.out.println("http://localhost:8080/");
 	}
 }
-
-

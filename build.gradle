@@ -39,7 +39,7 @@ repositories {
     mavenCentral()
 }
 
-wrapper{
+wrapper {
     gradleVersion = '6.5'
     distributionType = Wrapper.DistributionType.BIN
 }
