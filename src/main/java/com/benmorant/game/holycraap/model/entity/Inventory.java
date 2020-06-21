@@ -30,5 +30,4 @@ public class Inventory {
 
   @OneToMany
   private List<Item> items;
-
 }

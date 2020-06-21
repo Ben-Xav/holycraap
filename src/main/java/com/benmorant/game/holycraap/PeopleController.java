@@ -14,31 +14,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(path = "/people")
 public class PeopleController {
 
-    @Autowired
+  @Autowired
+  private PeopleService peopleService;
 
-    private PeopleService peopleService;
+  @PostMapping(path = "/add")
+  public @ResponseBody
+  String addNewPeople(
+      @RequestParam String name,
+      @RequestParam int currentHp,
+      @RequestParam int hpMax,
+      @RequestParam int currentMp,
+      @RequestParam int mpMax) {
 
-    @PostMapping(path = "/add")
-    public @ResponseBody
-    String addNewPeople(@RequestParam String name
-        , @RequestParam int currentHp, @RequestParam int hpMax, @RequestParam int currentMp,
-        @RequestParam int mpMax) {
+    People p = new People();
+    p.setName(name);
+    p.setCurrentHp(currentHp);
+    p.setHpMax(hpMax);
+    p.setCurrentMp(currentMp);
+    p.setMpMax(mpMax);
+    peopleService.saveInBase(p);
+    return name + "added to database !";
+  }
 
-        People p = new People();
-        p.setName(name);
-        p.setCurrentHp(currentHp);
-        p.setHpMax(hpMax);
-        p.setCurrentMp(currentMp);
-        p.setMpMax(mpMax);
-        peopleService.saveInBase(p);
-        return name + "added to database !";
-    }
+  @GetMapping(path = "/all")
+  public @ResponseBody
+  Iterable<People> getAllPeople() {
 
-    @GetMapping(path = "/all")
-    public @ResponseBody
-    Iterable<People> getAllPeople() {
-
-        return peopleService.getAllPeople();
-    }
-
+    return peopleService.getAllPeople();
+  }
 }

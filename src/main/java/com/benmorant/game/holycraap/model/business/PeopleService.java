@@ -7,8 +7,7 @@ public interface PeopleService {
 
   People saveInBase(People people);
 
-    People getByName(String name);
+  People getByName(String name);
 
-    List<People> getAllPeople();
-
+  List<People> getAllPeople();
 }

@@ -11,21 +11,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PeopleServiceImpl implements PeopleService {
 
-    @Autowired
-    PeopleDao peopleDao;
+  @Autowired
+  PeopleDao peopleDao;
 
-    @Override
-    public People saveInBase(People people) {
-        return peopleDao.save(people);
-    }
+  @Override
+  public People saveInBase(People people) {
+    return peopleDao.save(people);
+  }
 
-    @Override
-    public People getByName(String name) {
-        return peopleDao.findByName(name);
-    }
+  @Override
+  public People getByName(String name) {
+    return peopleDao.findByName(name);
+  }
 
-    @Override
-    public List<People> getAllPeople() {
-        return peopleDao.findAll();
-    }
+  @Override
+  public List<People> getAllPeople() {
+    return peopleDao.findAll();
+  }
 }

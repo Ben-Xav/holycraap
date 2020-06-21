@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -20,20 +19,19 @@ import lombok.RequiredArgsConstructor;
 @Table(name = "people")
 public class People implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @NonNull
-    private String name;
-    private int currentHp;
-    private int hpMax;
-    private int currentMp;
-    private int mpMax;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @OneToOne(mappedBy = "people")
-    private Inventory inventory;
+  @NonNull
+  private String name;
+  private int currentHp;
+  private int hpMax;
+  private int currentMp;
+  private int mpMax;
 
-
+  @OneToOne(mappedBy = "people")
+  private Inventory inventory;
 }
