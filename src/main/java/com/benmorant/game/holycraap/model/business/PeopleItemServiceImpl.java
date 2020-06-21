@@ -18,5 +18,5 @@ public class PeopleItemServiceImpl implements PeopleItemService {
         return peopleItemDao.save(peopleItem);
     }
 
-
 }
+

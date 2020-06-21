@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
-    ItemDao ItemDao;
+    ItemDao itemDao;
 
     @Override
     public Item saveInBase(Item item) {
-        return ItemDao.save(item);
+        return itemDao.save(item);
     }
 
 }
