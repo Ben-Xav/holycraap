@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MvcResult;
 @AutoConfigureMockMvc
 class PeopleControllerTest {
 
-  private static final ObjectMapper objectMapper = new ObjectMapper();
+  private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
   @Autowired private PeopleController controller;
   @Autowired private MockMvc mockMvc;
 
@@ -33,7 +33,7 @@ class PeopleControllerTest {
     final MvcResult result =
         mockMvc.perform(get("/api/people")).andExpect(status().isOk()).andReturn();
     final Collection<People> peopleList =
-        objectMapper.readValue(
+        OBJECT_MAPPER.readValue(
             result.getResponse().getContentAsString(), new TypeReference<Collection<People>>() {});
     assertThat(peopleList).isNotEmpty();
   }
