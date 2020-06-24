@@ -48,7 +48,7 @@ public class PeopleController {
 
   @PostMapping("/people")
   ResponseEntity<People> createPeople(@Valid @RequestBody People people) throws URISyntaxException {
-    log.info("Request to create group: {}", people);
+    log.info("Request to create people: {}", people);
     People result = peopleService.saveInBase(people);
     return ResponseEntity.created(new URI("/api/people/" + result.getId())).body(result);
   }
