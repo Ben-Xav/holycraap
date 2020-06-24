@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class PeopleController {
 
-  private final Logger log = LoggerFactory.getLogger(PeopleController.class);
+  private static final Logger LOG = LoggerFactory.getLogger(PeopleController.class);
 
   @Autowired private PeopleService peopleService;
 
@@ -48,14 +48,14 @@ public class PeopleController {
 
   @PostMapping("/people")
   ResponseEntity<People> createPeople(@Valid @RequestBody People people) throws URISyntaxException {
-    log.info("Request to create people: {}", people);
+    LOG.info("Request to create people: {}", people);
     People result = peopleService.saveInBase(people);
     return ResponseEntity.created(new URI("/api/people/" + result.getId())).body(result);
   }
 
   @PutMapping("/people/{id}")
   ResponseEntity<People> updatePeople(@Valid @RequestBody People people) {
-    log.info("Request to update people: {}", people);
+    LOG.info("Request to update people: {}", people);
     People result = peopleService.saveInBase(people);
     return ResponseEntity.ok().body(result);
   }
@@ -63,7 +63,7 @@ public class PeopleController {
   /** Method for deleting a people by id. */
   @DeleteMapping("/people/{id}")
   public ResponseEntity<?> deletePeople(@PathVariable Integer id) {
-    log.info("Request to delete people: {}", id);
+    LOG.info("Request to delete people: {}", id);
     peopleService.removeById(id);
     return ResponseEntity.ok().build();
   }
