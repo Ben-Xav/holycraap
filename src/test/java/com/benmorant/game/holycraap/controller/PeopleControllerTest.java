@@ -1,4 +1,4 @@
-package com.benmorant.game.holycraap.model;
+package com.benmorant.game.holycraap.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -20,10 +20,8 @@ import org.springframework.test.web.servlet.MvcResult;
 class PeopleControllerTest {
 
   private static final ObjectMapper objectMapper = new ObjectMapper();
-  @Autowired
-  private PeopleController controller;
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private PeopleController controller;
+  @Autowired private MockMvc mockMvc;
 
   @Test
   public void contextLoads() {
@@ -33,11 +31,10 @@ class PeopleControllerTest {
   @Test
   public void shouldReturnAllPeople() throws Exception {
     final MvcResult result =
-        mockMvc.perform(get("/people/all")).andExpect(status().isOk()).andReturn();
+        mockMvc.perform(get("/api/people")).andExpect(status().isOk()).andReturn();
     final Collection<People> peopleList =
         objectMapper.readValue(
-            result.getResponse().getContentAsString(), new TypeReference<Collection<People>>() {
-            });
+            result.getResponse().getContentAsString(), new TypeReference<Collection<People>>() {});
     assertThat(peopleList).isNotEmpty();
   }
 }

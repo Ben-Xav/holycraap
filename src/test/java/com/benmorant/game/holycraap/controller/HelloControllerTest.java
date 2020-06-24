@@ -1,4 +1,4 @@
-package com.benmorant.game.holycraap;
+package com.benmorant.game.holycraap.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -15,23 +15,17 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 class HelloControllerTest {
 
-  @Autowired
-  private HelloController controller;
+  @Autowired private HelloController controller;
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-  /**
-   * Sanity check to verify the controller has been properly loaded.
-   */
+  /** Sanity check to verify the controller has been properly loaded. */
   @Test
   public void contextLoads() {
     assertThat(controller).isNotNull();
   }
 
-  /**
-   * Testing GET "/" API route.
-   */
+  /** Testing GET "/" API route. */
   @Test
   public void shouldReturnYo() throws Exception {
     mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string("Yo !"));
