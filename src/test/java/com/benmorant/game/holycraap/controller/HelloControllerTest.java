@@ -1,4 +1,4 @@
-package com.benmorant.game.holycraap;
+package com.benmorant.game.holycraap.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
