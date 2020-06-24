@@ -2,11 +2,11 @@ package com.benmorant.game.holycraap.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,13 +21,11 @@ public class Inventory implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  @Id private Integer id;
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-  @OneToOne
-  @JoinColumn(referencedColumnName = "id")
-  private People people;
+  @OneToOne @MapsId private People people;
 
-  @OneToMany private List<Item> items;
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  private List<Item> items;
 }

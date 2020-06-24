@@ -9,11 +9,11 @@ insert into `inventory` (people_id) values (2);
 insert into `inventory` (people_id) values (3);
 
 /* Item */
-insert into `item` (name, price, slot, inventory_id) values ('Dent de dragon', '100', '1', '1');
-insert into `item` (name, price, slot, inventory_id) values ('salicorne', '2', '1', '2');
-insert into `item` (name, price, slot, inventory_id) values ('gousse de mandragore', '5', '1', '3');
+insert into `item` (name, price, slot, inventory_people_id) values ('Dent de dragon', '100', '1', '1');
+insert into `item` (name, price, slot, inventory_people_id) values ('salicorne', '2', '1', '2');
+insert into `item` (name, price, slot, inventory_people_id) values ('gousse de mandragore', '5', '1', '3');
 
 /* Inventory-Items associations */
-insert into `inventory_items` (items_id, inventory_id) values ('1', '1');
-insert into `inventory_items` (items_id, inventory_id) values ('2', '2');
-insert into `inventory_items` (items_id, inventory_id) values ('3', '3');
+insert into `inventory_items` (items_id, inventory_people_id) values ('1', '1');
+insert into `inventory_items` (items_id, inventory_people_id) values ('2', '2');
+insert into `inventory_items` (items_id, inventory_people_id) values ('3', '3');
