@@ -27,4 +27,52 @@ public class People implements Serializable {
   private int hpMax;
   private int currentMp;
   private int mpMax;
+
+  public int getCurrentHp() {
+    return currentHp;
+  }
+
+  public int getCurrentMp() {
+    return currentMp;
+  }
+
+  public int getHpMax() {
+    return hpMax;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public int getMpMax() {
+    return mpMax;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setCurrentHp(final int currentHp) {
+    this.currentHp = currentHp;
+  }
+
+  public void setCurrentMp(final int currentMp) {
+    this.currentMp = currentMp;
+  }
+
+  public void setHpMax(final int hpMax) {
+    this.hpMax = hpMax;
+  }
+
+  public void setId(final int id) {
+    this.id = id;
+  }
+
+  public void setMpMax(final int mpMax) {
+    this.mpMax = mpMax;
+  }
+
+  public void setName(final String name) {
+    this.name = name;
+  }
 }
