@@ -57,8 +57,6 @@ class PeopleControllerTest {
     final Collection<People> firstList = getAllPeople();
     assertThat(firstList).isNotNull();
 
-    final int size = firstList.size();
-
     final People input = new People();
     input.setCurrentHp(hp);
     input.setCurrentMp(mp);
@@ -68,10 +66,14 @@ class PeopleControllerTest {
 
     final People result = createPeople(input);
     assertThat(result).isNotNull();
+    assertThat(result.getCurrentHp()).isEqualTo(hp);
+    assertThat(result.getCurrentMp()).isEqualTo(mp);
+    assertThat(result.getHpMax()).isEqualTo(hpMax);
+    assertThat(result.getMpMax()).isEqualTo(mpMax);
     assertThat(result.getName()).isEqualTo(name);
 
     final Collection<People> resultList = getAllPeople();
+    assertThat(firstList).doesNotContain(result);
     assertThat(resultList).contains(result);
-    assertThat(resultList).hasSizeGreaterThan(size);
   }
 }
