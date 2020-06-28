@@ -10,7 +10,6 @@ plugins {
 
 group = 'com.benmorant.game'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 checkstyle {
     toolVersion = '8.33'
@@ -43,11 +42,6 @@ configurations {
 
 repositories {
     mavenCentral()
-}
-
-wrapper {
-    gradleVersion = '6.5'
-    distributionType = Wrapper.DistributionType.BIN
 }
 
 dependencies {
