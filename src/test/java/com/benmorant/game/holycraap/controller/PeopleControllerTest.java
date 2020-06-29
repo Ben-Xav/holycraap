@@ -5,10 +5,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.benmorant.game.holycraap.model.business.ItemService;
+import com.benmorant.game.holycraap.model.entity.Item;
 import com.benmorant.game.holycraap.model.entity.People;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,6 +30,7 @@ class PeopleControllerTest {
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
   @Autowired private PeopleController controller;
   @Autowired private MockMvc mockMvc;
+  @Autowired private ItemService itemService;
 
   private Collection<People> getAllPeople() throws Exception {
     final MockHttpServletRequestBuilder request = get(PEOPLE_API);
@@ -54,6 +59,16 @@ class PeopleControllerTest {
     final int hpMax = 11;
     final int mp = 12;
     final int mpMax = 13;
+    final Item item = new Item();
+    item.setId(null);
+    item.setName(null);
+    item.setSlot(0);
+    item.setPrice(0.0);
+    Item peopleItem = itemService.saveInBase(item);
+
+    final List<Item> inventory = new ArrayList<>();
+    inventory.add(peopleItem);
+
     final Collection<People> firstList = getAllPeople();
     assertThat(firstList).isNotNull();
 
@@ -63,6 +78,7 @@ class PeopleControllerTest {
     input.setHpMax(hpMax);
     input.setMpMax(mpMax);
     input.setName(name);
+    input.setInventory(inventory);
 
     final People result = createPeople(input);
     assertThat(result).isNotNull();
@@ -71,6 +87,7 @@ class PeopleControllerTest {
     assertThat(result.getHpMax()).isEqualTo(hpMax);
     assertThat(result.getMpMax()).isEqualTo(mpMax);
     assertThat(result.getName()).isEqualTo(name);
+    assertThat(result.getInventory()).isEqualTo(inventory);
 
     final Collection<People> resultList = getAllPeople();
     assertThat(firstList).doesNotContain(result);
