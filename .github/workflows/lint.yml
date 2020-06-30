@@ -1,0 +1,40 @@
+---
+name: Lint
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Update Aptitude cache
+        run: sudo apt update
+
+      - name: Install yamllint
+        run: sudo apt install -y yamllint
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install markdownlint-cli and sql-lint
+        run: npm install markdownlint-cli sql-lint
+
+      - name: Lint YAML files
+        run: yamllint .
+
+      - name: Lint Markdown files
+        run: markdownlint .
+
+      - name: Lint SQL files
+        run: sql-lint .
