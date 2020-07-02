@@ -1,6 +1,6 @@
 /* People */
 INSERT INTO `people` (name, current_hp, hp_max, current_mp, mp_max) VALUES ('Loup Ardent', 12, 12, 6, 6);
-INSERT INTO `people` (name, current_hp, hp_max, current_mp, mp_max) VALUES ('Hardy Xav', 1000, 1000, 1000, 1000);
+INSERT INTO `people` (name, current_hp, hp_max, current_mp, mp_max) VALUES ('Guybrush Threepwood', 1000, 1000, 1000, 1000);
 INSERT INTO `people` (name, current_hp, hp_max, current_mp, mp_max) VALUES ('Conan le Barbare', 14, 18, 4, 4);
 
 

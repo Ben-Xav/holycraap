@@ -6,12 +6,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.benmorant.game.holycraap.model.entity.Item;
-import com.benmorant.game.holycraap.model.entity.People;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,26 +20,26 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class PeopleControllerTest {
-  private static final String PEOPLE_API = "/api/people";
+class ItemControllerTest {
+  private static final String ITEMS_API = "/api/items";
 
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-  @Autowired private PeopleController controller;
+  @Autowired private ItemController controller;
   @Autowired private MockMvc mockMvc;
 
-  private Collection<People> getAllPeople() throws Exception {
-    final MockHttpServletRequestBuilder request = get(PEOPLE_API);
+  private Collection<Item> getAllItems() throws Exception {
+    final MockHttpServletRequestBuilder request = get(ITEMS_API);
     final MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
     return OBJECT_MAPPER.readValue(
-        result.getResponse().getContentAsString(), new TypeReference<Collection<People>>() {});
+        result.getResponse().getContentAsString(), new TypeReference<Collection<Item>>() {});
   }
 
-  private People createPeople(final People people) throws Exception {
-    final String content = OBJECT_MAPPER.writeValueAsString(people);
+  private Item createItem(final Item item) throws Exception {
+    final String content = OBJECT_MAPPER.writeValueAsString(item);
     final MockHttpServletRequestBuilder request =
-        post(PEOPLE_API).contentType(MediaType.APPLICATION_JSON).content(content);
+        post(ITEMS_API).contentType(MediaType.APPLICATION_JSON).content(content);
     final MvcResult result = mockMvc.perform(request).andExpect(status().isCreated()).andReturn();
-    return OBJECT_MAPPER.readValue(result.getResponse().getContentAsString(), People.class);
+    return OBJECT_MAPPER.readValue(result.getResponse().getContentAsString(), Item.class);
   }
 
   @Test
@@ -51,35 +48,26 @@ class PeopleControllerTest {
   }
 
   @Test
-  public void shouldReturnAllPeople() throws Exception {
-    final String name = "somename";
-    final int hp = 10;
-    final int hpMax = 11;
-    final int mp = 12;
-    final int mpMax = 13;
-    final List<Item> inventory = new ArrayList<>();
+  public void shouldReturnAllItems() throws Exception {
+    final String name = "Somename";
+    final int slot = 2;
+    final double price = 1.45;
 
-    final Collection<People> firstList = getAllPeople();
+    final Collection<Item> firstList = getAllItems();
     assertThat(firstList).isNotNull();
 
-    final People input = new People();
-    input.setCurrentHp(hp);
-    input.setCurrentMp(mp);
-    input.setHpMax(hpMax);
-    input.setMpMax(mpMax);
+    final Item input = new Item();
+    input.setPrice(price);
+    input.setSlot(slot);
     input.setName(name);
-    input.setInventory(inventory);
 
-    final People result = createPeople(input);
+    final Item result = createItem(input);
     assertThat(result).isNotNull();
-    assertThat(result.getCurrentHp()).isEqualTo(hp);
-    assertThat(result.getCurrentMp()).isEqualTo(mp);
-    assertThat(result.getHpMax()).isEqualTo(hpMax);
-    assertThat(result.getMpMax()).isEqualTo(mpMax);
+    assertThat(result.getPrice()).isEqualTo(price);
+    assertThat(result.getSlot()).isEqualTo(slot);
     assertThat(result.getName()).isEqualTo(name);
-    assertThat(result.getInventory()).isEqualTo(inventory);
 
-    final Collection<People> resultList = getAllPeople();
+    final Collection<Item> resultList = getAllItems();
     assertThat(firstList).doesNotContain(result);
     assertThat(resultList).contains(result);
   }
