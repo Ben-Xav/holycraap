@@ -59,15 +59,7 @@ class PeopleControllerTest {
     final int hpMax = 11;
     final int mp = 12;
     final int mpMax = 13;
-    final Item item = new Item();
-    item.setId(null);
-    item.setName(null);
-    item.setSlot(0);
-    item.setPrice(0.0);
-    Item peopleItem = itemService.saveInBase(item);
-
     final List<Item> inventory = new ArrayList<>();
-    inventory.add(peopleItem);
 
     final Collection<People> firstList = getAllPeople();
     assertThat(firstList).isNotNull();
