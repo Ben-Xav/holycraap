@@ -52,7 +52,7 @@ class PeopleControllerTest {
 
   @Test
   public void shouldReturnAllPeople() throws Exception {
-    final String name = "somename";
+    final String name = "somePeopleController";
     final int hp = 10;
     final int hpMax = 11;
     final int mp = 12;

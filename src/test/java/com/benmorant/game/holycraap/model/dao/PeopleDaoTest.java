@@ -32,7 +32,7 @@ public class PeopleDaoTest {
 
   @Test
   public void shouldReturnAllPeople() {
-    final String name = "somename";
+    final String name = "somePeopleDao";
     final int hp = 10;
     final int hpMax = 11;
     final int mp = 12;

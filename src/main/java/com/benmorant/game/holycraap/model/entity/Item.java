@@ -33,7 +33,7 @@ public class Item implements Serializable {
 
   public Item() {}
 
-  /** Constructeur surchargé pour Item (moind l'ID, auto-généré. */
+  /** Constructeur surchargé pour Item (moins l'ID, auto-généré. */
   public Item(String name, int slot, double price, People people) {
     this.name = name;
     this.slot = slot;

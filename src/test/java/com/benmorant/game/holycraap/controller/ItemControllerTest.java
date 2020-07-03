@@ -49,7 +49,7 @@ class ItemControllerTest {
 
   @Test
   public void shouldReturnAllItems() throws Exception {
-    final String name = "Somename";
+    final String name = "SomeItemController";
     final int slot = 2;
     final double price = 1.45;
 
