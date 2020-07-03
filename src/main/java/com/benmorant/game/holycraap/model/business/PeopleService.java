@@ -8,7 +8,7 @@ public interface PeopleService {
 
   People saveInBase(People people);
 
-  People getByName(String name);
+  Optional<People> getByName(String name);
 
   Optional<People> getById(Integer id);
 

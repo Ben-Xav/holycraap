@@ -20,7 +20,7 @@ public class ItemServiceImpl implements ItemService {
   }
 
   @Override
-  public Item getByName(String name) {
+  public Optional<Item> getByName(String name) {
     return itemDao.findByName(name);
   }
 

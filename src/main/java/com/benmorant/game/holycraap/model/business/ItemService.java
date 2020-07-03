@@ -8,7 +8,7 @@ public interface ItemService {
 
   Item saveInBase(Item item);
 
-  Item getByName(String name);
+  Optional<Item> getByName(String name);
 
   Optional<Item> getById(Integer id);
 
