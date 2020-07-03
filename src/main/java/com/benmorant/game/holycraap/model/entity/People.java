@@ -32,25 +32,7 @@ public class People implements Serializable {
   @JsonManagedReference
   private List<Item> inventory = new ArrayList<>();
 
-  public void addItem(Item item) {
-    inventory.add(item);
-    item.setPeople(this);
-  }
-
-  public void removeItem(Item item) {
-    inventory.remove(item);
-    item.setPeople(null);
-  }
-
   public People() {}
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 
   public People(@NonNull String name) {
     this.name = name;
@@ -63,6 +45,24 @@ public class People implements Serializable {
     this.hpMax = hpMax;
     this.currentMp = currentMp;
     this.mpMax = mpMax;
+  }
+
+  public void addItem(Item item) {
+    inventory.add(item);
+    item.setPeople(this);
+  }
+
+  public void removeItem(Item item) {
+    inventory.remove(item);
+    item.setPeople(null);
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Integer getId() {
