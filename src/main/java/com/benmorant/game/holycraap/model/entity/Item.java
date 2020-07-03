@@ -26,6 +26,7 @@ public class Item implements Serializable {
 
   public Item() {}
 
+  /** Constructeur surchargé pour Item (moind l'ID, auto-généré. */
   public Item(String name, int slot, double price) {
     this.name = name;
     this.slot = slot;
@@ -64,10 +65,15 @@ public class Item implements Serializable {
     this.price = price;
   }
 
+  /** Méthode equals pour Item. */
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Item)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Item)) {
+      return false;
+    }
     return id != null && id.equals(((Item) o).getId());
   }
 

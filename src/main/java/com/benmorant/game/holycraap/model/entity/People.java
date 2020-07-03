@@ -1,6 +1,7 @@
 package com.benmorant.game.holycraap.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,19 +43,14 @@ public class People implements Serializable {
     this.name = name;
   }
 
-  public People(
-      @NonNull String name,
-      int currentHp,
-      int hpMax,
-      int currentMp,
-      int mpMax,
-      List<Item> inventory) {
+  /** Constructeur surchargé pour People (moins l'ID, auto-généré .) */
+  public People(@NonNull String name, int currentHp, int hpMax, int currentMp, int mpMax) {
     this.name = name;
     this.currentHp = currentHp;
     this.hpMax = hpMax;
     this.currentMp = currentMp;
     this.mpMax = mpMax;
-    this.inventory = inventory;
+    this.inventory = new ArrayList<>();
   }
 
   public Integer getId() {
@@ -107,8 +103,12 @@ public class People implements Serializable {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof People)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof People)) {
+      return false;
+    }
     return id != null && id.equals(((People) o).getId());
   }
 
