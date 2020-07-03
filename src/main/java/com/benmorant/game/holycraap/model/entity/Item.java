@@ -1,10 +1,13 @@
 package com.benmorant.game.holycraap.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 // @Data
@@ -13,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "item")
 public class Item implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = -194265094836903844L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +27,18 @@ public class Item implements Serializable {
 
   private double price;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonBackReference
+  private People people;
+
   public Item() {}
 
   /** Constructeur surchargé pour Item (moind l'ID, auto-généré. */
-  public Item(String name, int slot, double price) {
+  public Item(String name, int slot, double price, People people) {
     this.name = name;
     this.slot = slot;
     this.price = price;
+    this.people = people;
   }
 
   public Integer getId() {
@@ -63,6 +71,14 @@ public class Item implements Serializable {
 
   public void setPrice(double price) {
     this.price = price;
+  }
+
+  public People getPeople() {
+    return people;
+  }
+
+  public void setPeople(People people) {
+    this.people = people;
   }
 
   /** Méthode equals pour Item. */

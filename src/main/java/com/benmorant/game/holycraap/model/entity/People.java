@@ -1,14 +1,13 @@
 package com.benmorant.game.holycraap.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.NonNull;
@@ -17,7 +16,7 @@ import lombok.NonNull;
 @Table(name = "people")
 public class People implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 2284045645181170802L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +28,19 @@ public class People implements Serializable {
   private int currentMp;
   private int mpMax;
 
-  @OneToMany(fetch = FetchType.EAGER)
-  @JoinColumn(name = "people_id")
-  private List<Item> inventory;
+  @OneToMany(mappedBy = "people")
+  @JsonManagedReference
+  private List<Item> inventory = new ArrayList<>();
+
+  public void addItem(Item item) {
+    inventory.add(item);
+    item.setPeople(this);
+  }
+
+  public void removeItem(Item item) {
+    inventory.remove(item);
+    item.setPeople(null);
+  }
 
   public People() {}
 
@@ -43,6 +52,10 @@ public class People implements Serializable {
     this.name = name;
   }
 
+  public People(@NonNull String name) {
+    this.name = name;
+  }
+
   /** Constructeur surchargé pour People (moins l'ID, auto-généré .) */
   public People(@NonNull String name, int currentHp, int hpMax, int currentMp, int mpMax) {
     this.name = name;
@@ -50,7 +63,6 @@ public class People implements Serializable {
     this.hpMax = hpMax;
     this.currentMp = currentMp;
     this.mpMax = mpMax;
-    this.inventory = new ArrayList<>();
   }
 
   public Integer getId() {
