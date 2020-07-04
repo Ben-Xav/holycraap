@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-// @Data
-// @NoArgsConstructor
 @Entity
 @Table(name = "item")
 public class Item implements Serializable {

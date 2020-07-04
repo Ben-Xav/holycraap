@@ -7,8 +7,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Optional;
 import javax.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +20,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class ItemController {
-
-  private static final Logger LOG =
-      LoggerFactory.getLogger(com.benmorant.game.holycraap.controller.ItemController.class);
 
   @Autowired private ItemService itemService;
 
@@ -49,14 +46,14 @@ public class ItemController {
 
   @PostMapping("/items")
   ResponseEntity<Item> createItem(@Valid @RequestBody Item item) throws URISyntaxException {
-    LOG.info("Request to create item: {}", item);
+    log.info("Request to create item: {}", item);
     Item result = itemService.saveInBase(item);
     return ResponseEntity.created(new URI("/api/items/" + result.getId())).body(result);
   }
 
   @PutMapping("/items/{id}")
   ResponseEntity<Item> updateItem(@Valid @RequestBody Item item) {
-    LOG.info("Request to update item: {}", item);
+    log.info("Request to update item: {}", item);
     Item result = itemService.saveInBase(item);
     return ResponseEntity.ok().body(result);
   }
@@ -64,7 +61,7 @@ public class ItemController {
   /** Method for deleting an item by id. */
   @DeleteMapping("/items/{id}")
   public ResponseEntity<?> deleteItem(@PathVariable Integer id) {
-    LOG.info("Request to delete item: {}", id);
+    log.info("Request to delete item: {}", id);
     itemService.removeById(id);
     return ResponseEntity.ok().build();
   }
