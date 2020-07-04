@@ -2,6 +2,7 @@ package com.benmorant.game.holycraap.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -49,7 +50,7 @@ public class Item implements Serializable {
 
   @Override
   public int hashCode() {
-    return 31;
+    return Objects.hash(id, name, slot, price, people);
   }
 
   @Override
