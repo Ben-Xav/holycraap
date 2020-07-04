@@ -10,8 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "people")
 public class People implements Serializable {
@@ -32,21 +40,6 @@ public class People implements Serializable {
   @JsonManagedReference
   private List<Item> inventory = new ArrayList<>();
 
-  public People() {}
-
-  public People(@NonNull String name) {
-    this.name = name;
-  }
-
-  /** Constructeur surchargé pour People (moins l'ID, auto-généré .) */
-  public People(@NonNull String name, int currentHp, int hpMax, int currentMp, int mpMax) {
-    this.name = name;
-    this.currentHp = currentHp;
-    this.hpMax = hpMax;
-    this.currentMp = currentMp;
-    this.mpMax = mpMax;
-  }
-
   public void addItem(Item item) {
     inventory.add(item);
     item.setPeople(this);
@@ -55,62 +48,6 @@ public class People implements Serializable {
   public void removeItem(Item item) {
     inventory.remove(item);
     item.setPeople(null);
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public int getCurrentHp() {
-    return currentHp;
-  }
-
-  public void setCurrentHp(int currentHp) {
-    this.currentHp = currentHp;
-  }
-
-  public int getHpMax() {
-    return hpMax;
-  }
-
-  public void setHpMax(int hpMax) {
-    this.hpMax = hpMax;
-  }
-
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  public void setCurrentMp(int currentMp) {
-    this.currentMp = currentMp;
-  }
-
-  public int getMpMax() {
-    return mpMax;
-  }
-
-  public void setMpMax(int mpMax) {
-    this.mpMax = mpMax;
-  }
-
-  public List<Item> getInventory() {
-    return inventory;
-  }
-
-  public void setInventory(List<Item> inventory) {
-    this.inventory = inventory;
   }
 
   @Override

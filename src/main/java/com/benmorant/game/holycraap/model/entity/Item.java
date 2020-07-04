@@ -9,7 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "item")
 public class Item implements Serializable {
@@ -28,56 +34,6 @@ public class Item implements Serializable {
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonBackReference
   private People people;
-
-  public Item() {}
-
-  /** Constructeur surchargé pour Item (moins l'ID, auto-généré. */
-  public Item(String name, int slot, double price, People people) {
-    this.name = name;
-    this.slot = slot;
-    this.price = price;
-    this.people = people;
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getSlot() {
-    return slot;
-  }
-
-  public void setSlot(int slot) {
-    this.slot = slot;
-  }
-
-  public double getPrice() {
-    return price;
-  }
-
-  public void setPrice(double price) {
-    this.price = price;
-  }
-
-  public People getPeople() {
-    return people;
-  }
-
-  public void setPeople(People people) {
-    this.people = people;
-  }
 
   /** Méthode equals pour Item. */
   @Override
