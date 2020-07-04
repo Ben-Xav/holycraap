@@ -41,28 +41,28 @@ public class ItemDaoTest {
 
   @Test
   public void findByName_shouldReturnPeople_whenEntryIsAdded() {
-    String name = "Vase Ming";
-    Item item = new Item();
+    final String name = "Vase Ming";
+    final Item item = new Item();
     item.setName(name);
     itemDao.save(item);
-    Optional<Item> actual = itemDao.findByName(name);
+    final Optional<Item> actual = itemDao.findByName(name);
     assertThat(actual).isNotEmpty();
     assertThat(actual).contains(item);
   }
 
   @Test
   public void save_shouldUpdateName_whenEntryIsSettedandSaved() {
-    String name1 = "Poudre de Perlimpimpin";
-    Item item = new Item();
+    final String name1 = "Poudre de Perlimpimpin";
+    final Item item = new Item();
     item.setName(name1);
     itemDao.save(item);
-    Optional<Item> actual1 = itemDao.findByName(name1);
+    final Optional<Item> actual1 = itemDao.findByName(name1);
     assertThat(actual1).isNotEmpty();
     assertThat(actual1).contains(item);
     String name2 = "de la DroGUe";
     item.setName(name2);
     itemDao.save(item);
-    Optional<Item> actual2 = itemDao.findByName(name2);
+    final Optional<Item> actual2 = itemDao.findByName(name2);
     assertThat(actual2).isNotEmpty();
     assertThat(actual2).contains(item);
   }

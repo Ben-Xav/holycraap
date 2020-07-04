@@ -23,7 +23,7 @@ public class PeopleDaoTest {
   @Autowired private EntityManager entityManager;
 
   @Test
-  void injectedComponentsAreNotNull() {
+  public void contextLoads() {
     assertThat(dataSource).isNotNull();
     assertThat(jdbcTemplate).isNotNull();
     assertThat(entityManager).isNotNull();
@@ -66,28 +66,28 @@ public class PeopleDaoTest {
 
   @Test
   public void findByName_shouldReturnPeople_whenEntryIsAdded() {
-    String name = "LeChuck";
-    People leChuck = new People();
+    final String name = "LeChuck";
+    final People leChuck = new People();
     leChuck.setName(name);
     peopleDao.save(leChuck);
-    Optional<People> actual = peopleDao.findByName(name);
+    final Optional<People> actual = peopleDao.findByName(name);
     assertThat(actual).isNotEmpty();
     assertThat(actual).contains(leChuck);
   }
 
   @Test
   public void save_shouldUpdateName_whenEntryIsSettedandSaved() {
-    String name1 = "LeChuck";
-    People leChuck = new People();
+    final String name1 = "LeChuck";
+    final People leChuck = new People();
     leChuck.setName(name1);
     peopleDao.save(leChuck);
-    Optional<People> actual1 = peopleDao.findByName(name1);
+    final Optional<People> actual1 = peopleDao.findByName(name1);
     assertThat(actual1).isNotEmpty();
     assertThat(actual1).contains(leChuck);
     String name2 = "Elaine Marley";
     leChuck.setName(name2);
     peopleDao.save(leChuck);
-    Optional<People> actual2 = peopleDao.findByName(name2);
+    final Optional<People> actual2 = peopleDao.findByName(name2);
     assertThat(actual2).isNotEmpty();
     assertThat(actual2).contains(leChuck);
   }
