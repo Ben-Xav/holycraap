@@ -58,7 +58,6 @@ public class ItemController {
     return ResponseEntity.ok().body(result);
   }
 
-  /** Method for deleting an item by id. */
   @DeleteMapping("/items/{id}")
   public ResponseEntity<?> deleteItem(@PathVariable Integer id) {
     log.info("Request to delete item: {}", id);
