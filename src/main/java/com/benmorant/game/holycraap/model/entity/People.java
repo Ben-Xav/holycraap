@@ -52,7 +52,7 @@ public class People implements Serializable {
     inventory.remove(item);
     item.setPeople(null);
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
