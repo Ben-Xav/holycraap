@@ -39,10 +39,12 @@ public class People implements Serializable {
 
   @OneToMany(mappedBy = "people")
   @JsonManagedReference
-  private List<Item> inventory = new ArrayList<>();
+  private final List<Item> inventory = new ArrayList<>();
 
   public void addItem(Item item) {
-    inventory.add(item);
+    if (!inventory.contains(item)) {
+      inventory.add(item);
+    }
     item.setPeople(this);
   }
 
@@ -50,7 +52,7 @@ public class People implements Serializable {
     inventory.remove(item);
     item.setPeople(null);
   }
-
+  
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -59,7 +61,13 @@ public class People implements Serializable {
     if (!(o instanceof People)) {
       return false;
     }
-    return id != null && id.equals(((People) o).getId());
+    People people = (People) o;
+    return currentHp == people.currentHp
+        && hpMax == people.hpMax
+        && currentMp == people.currentMp
+        && mpMax == people.mpMax
+        && Objects.equals(id, people.id)
+        && Objects.equals(name, people.name);
   }
 
   @Override

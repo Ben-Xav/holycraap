@@ -36,7 +36,6 @@ public class Item implements Serializable {
   @JsonBackReference
   private People people;
 
-  /** Méthode equals pour Item. */
   @Override
   public boolean equals(Object o) {
     if (this == o) {
