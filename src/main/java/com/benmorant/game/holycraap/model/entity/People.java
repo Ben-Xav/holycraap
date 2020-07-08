@@ -2,8 +2,8 @@ package com.benmorant.game.holycraap.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,13 +39,13 @@ public class People implements Serializable {
 
   @OneToMany(mappedBy = "people")
   @JsonManagedReference
-  private final List<Item> inventory = new ArrayList<>();
+  private final Collection<Item> inventory = new HashSet<>();
 
   public void addItem(Item item) {
     if (!inventory.contains(item)) {
       inventory.add(item);
+      item.setPeople(this);
     }
-    item.setPeople(this);
   }
 
   public void removeItem(Item item) {
