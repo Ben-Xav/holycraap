@@ -7,10 +7,20 @@ plugins {
     id 'jacoco'
     id 'com.github.spotbugs' version '4.4.1'
     id 'application'
+    id 'com.google.cloud.tools.jib' version '2.4.0'
 }
 
 group = 'com.benmorant.game'
 version = '0.0.1-SNAPSHOT'
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'in order to generate the .jar file',
+                'Main-Class': 'com.benmorant.game.holycraap.HolycraapApplication'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
 
 checkstyle {
     toolVersion = '8.33'
