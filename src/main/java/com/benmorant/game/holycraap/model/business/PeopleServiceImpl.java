@@ -20,7 +20,7 @@ public class PeopleServiceImpl implements PeopleService {
   }
 
   @Override
-  public People getByName(String name) {
+  public Optional<People> getByName(String name) {
     return peopleDao.findByName(name);
   }
 
