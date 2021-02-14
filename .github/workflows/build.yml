@@ -1,14 +1,16 @@
+---
 name: Build
 
+# yamllint disable-line rule:truthy
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -28,11 +30,8 @@ jobs:
       - name: Start MySQL server
         run: sudo systemctl start mysql
 
-      - name: Configure MySQL server
-        run: mysql -proot -uroot -e "GRANT ALL PRIVILEGES ON db_holycraap.* TO 'root'@'localhost'; FLUSH PRIVILEGES"
-
       - name: Update MySQL client configuration
-        run: sed -Ei 's/spring.datasource.(username|password) *=.*/spring.datasource.\1=root/g' src/main/resources/application.properties
+        run: sed -Ei 's/root1/root/g' src/main/resources/application.properties
 
       - name: Build with Gradle
         run: gradle build -x googleJavaFormat
